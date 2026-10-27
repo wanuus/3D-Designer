@@ -1,0 +1,14 @@
+{
+  "mode": "local-only",
+  "_comment": "mode: local-only | hybrid | cloud-enabled. Cloud providers are refused unless mode allows them. Swap a provider per task by changing the 'provider' name; no code changes needed.",
+  "providers": {
+    "ollama_vision": { "host": "http://127.0.0.1:11434", "keep_alive": "30s" }
+  },
+  "tasks": {
+    "floorplan_preprocess": { "provider": "opencv_floorplan" },
+    "floorplan_ocr":        { "provider": "paddle_ocr" },
+    "reference_analysis":   { "provider": "ollama_vision", "options": { "model": "qwen2.5vl:3b" } },
+    "segmentation":         { "provider": "sam2" },
+    "image_to_3d":          { "provider": "triposr" }
+  }
+}

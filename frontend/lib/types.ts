@@ -1,0 +1,11 @@
+export type Opening = { id: string; room_id: string; kind: "door" | "window" | "opening"; edge_index: number; offset: number; width: number; height: number; sill: number; is_entrance: boolean; source: string };
+export type Room = { id: string; project_id: string; name: string; polygon: [number, number][]; ceiling_height: number; floor_level: number; dimension_source: string; status: string; progress: number; notes: string; openings: Opening[]; area: number };
+export type Project = { id: string; name: string; client_name: string; client_contact: string; description: string; location: string; status: string; wall_thickness: number; notes: string; created_at: string; updated_at: string; room_count: number };
+export type Asset = { id: string; project_id: string; room_id: string | null; category: string; name: string; mime: string; size_bytes: number; created_at: string; deleted_at: string | null };
+export type Box = { id: string; kind: string; room_id: string; edge: number; center: [number, number, number]; size: [number, number, number]; rotation_y: number; y: [number, number] };
+export type SceneRoom = { room_id: string; name: string; polygon: [number, number][]; ceiling_height: number; floor_level: number; area: number; walls: Box[]; glass: Box[]; floor: { polygon: [number, number][]; y: number }; ceiling: { polygon: [number, number][]; y: number } };
+export type Scene = { wall_thickness: number; rooms: SceneRoom[]; bounds: { min: [number, number]; max: [number, number] } | null; spawn: { position: [number, number, number]; look: [number, number]; from: string } | null; dimension_sources: Record<string, string> };
+export const PROJECT_STATUSES = ["Draft", "Floor Plan Uploaded", "Floor Plan Verified", "Design in Progress", "Ready for 3D Generation", "3D Generated", "Under Client Review", "Revision Requested", "Approved", "Completed", "Archived"];
+export const ROOM_STATUSES = ["Not Started", "In Progress", "Under Review", "Approved", "Completed"];
+export const DIM_LABEL: Record<string, string> = { verified: "Verified", ai_estimated: "AI-estimated", user_defined: "User-defined" };
+export type FloorPlan = { id: string; project_id: string; asset_id: string | null; scale_m_per_px: number; ref_p1: [number, number]; ref_p2: [number, number]; ref_real_m: number; image_width: number; image_height: number };

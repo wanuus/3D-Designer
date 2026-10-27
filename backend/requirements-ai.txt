@@ -1,0 +1,3 @@
+# Optional, heavy. Install only when you want local OCR (see docs/AI-MODEL-BENCHMARKS.md).
+paddlepaddle
+paddleocr

@@ -1,0 +1,16 @@
+@tailwind base; @tailwind components; @tailwind utilities;
+:root { --bg: 233 235 232; --surface: 245 246 244; --raised: 255 255 255; --line: 205 210 206; --ink: 27 34 38; --muted: 95 107 112; --accent: 46 107 94; --danger: 176 58 46; }
+.dark { --bg: 18 23 26; --surface: 26 33 37; --raised: 33 42 47; --line: 48 59 64; --ink: 228 232 230; --muted: 140 153 158; --accent: 125 187 168; --danger: 226 120 108; }
+html { color-scheme: light; } html.dark { color-scheme: dark; }
+body { @apply bg-bg text-ink font-sans antialiased; }
+h1, h2, h3 { @apply font-display tracking-tight; }
+@layer components {
+  .panel { @apply bg-surface border border-line rounded-md; }
+  .btn { @apply inline-flex items-center gap-2 rounded px-3 py-1.5 text-sm border border-line bg-raised hover:border-accent transition-colors disabled:opacity-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent; }
+  .btn-primary { @apply bg-accent text-bg border-accent hover:opacity-90; }
+  .btn-danger { @apply text-danger hover:border-danger; }
+  .input { @apply w-full rounded border border-line bg-raised px-2.5 py-1.5 text-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent; }
+  .label { @apply block text-xs text-muted mb-1; }
+  .badge { @apply inline-block rounded-sm px-1.5 py-0.5 text-xs border border-line text-muted; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
